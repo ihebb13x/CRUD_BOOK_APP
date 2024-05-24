@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Gestion des Livres</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+      margin-top: 50px;
+    }
+
+    .card {
+      border-radius: 10px;
+    }
+
+    .table th,
+    .table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .table th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #f2f2f2;
+    }
+
+    .btn-custom {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom.btn-danger {
+      background-color: #dc3545;
+      color: white;
+      border: 1px solid transparent;
+    }
+
+    .btn-custom.btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+    .btn-custom.btn-success {
+      background-color: #28a745;
+      color: white;
+      border: 1px solid transparent;
+    }
+
+    .btn-custom.btn-success:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Liste des Livres</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Date Publication</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let livre of livres">
+                <td>{{livre.idLivre}}</td>
+                <td>{{livre.titreLivre}}</td>
+                <td>{{livre.prixLivre}}</td>
+                <td>{{livre.datePublication | date:'dd/MM/yyyy'}}</td>
+                <td>{{livre.categorie.nomCat}}</td>
+                <td>
+                  <a *ngIf="authService.isAdmin()"
+                    class="btn btn-custom btn-danger" (click)="supprimerLivre(livre)">Supprimer</a>
+                  <a *ngIf="authService.isAdmin()"
+                    class="btn btn-custom btn-success" [routerLink]="['/updateLivre', livre.idLivre]">Modifier</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

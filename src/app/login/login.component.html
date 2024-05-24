@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form-control {
+            margin-bottom: 1rem;
+        }
+
+        .btn-success {
+            width: 100%;
+        }
+
+        .alert {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="form-container">
+                    <div class="alert alert-danger" *ngIf="erreur==1">
+                        <strong>Login ou mot de passe erronés..</strong>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label>Nom Utilisateur :</label>
+                            <input type="text" name="username" class="form-control" [(ngModel)]="user.username">
+                        </div>
+                        <div class="form-group">
+                            <label>Mot de passe :</label>
+                            <input type="password" name="password" [(ngModel)]="user.password" class="form-control">
+                        </div>
+                        <button type="button" (click)="onLoggedin()" class="btn btn-success">Connexion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-- <div class="container mt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="row justify-content-md-center">
+                <div class="col-md-4">
+                <div class="alert alert-danger" *ngIf="erreur==1">
+                <strong>login ou mot de passe erronés..</strong>
+                </div>
+            <form>
+                <div class="form-group">
+                    <label>Nom Utilisateur :</label>
+                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username">
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe :</label>
+                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control">
+                </div>
+                <div class="row justify-content-md-center">
+                    <button type="button" (click)="onLoggedin()" class="btn btn-success">Connexion</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div> -->

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Modifier un Livre</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .form-control {
+            margin-bottom: 1rem;
+        }
+        .btn-success {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <div>
+            <h2>Modifier un Livre</h2>
+        </div>
+        <form>
+            <div class="form-group" >
+                <label for="idLivre">ID Livre</label>
+                <input type="text" [(ngModel)]="currentLivre.idLivre" name="idLivre" id="idLivre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="titreLivre">Nom Livre</label>
+                <input type="text" [(ngModel)]="currentLivre.titreLivre" name="titreLivre" id="titreLivre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="prixLivre">Prix Livre</label>
+                <input type="number" [(ngModel)]="currentLivre.prixLivre" name="prixLivre" id="prixLivre" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="datePublication">Date Publication</label>
+                <input type="date" [ngModel]="currentLivre.datePublication | date: 'yyyy-MM-dd'"
+                       (ngModelChange)="currentLivre.datePublication= $event" name="datePublication" id="datePublication" class="form-control">
+            </div>
+            <button type="submit" (click)="updateLivre()" class="btn btn-success">Modifier</button>
+        </form>
+    </div>
+
+ </body>
+</html>
